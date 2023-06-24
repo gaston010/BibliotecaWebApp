@@ -6,7 +6,7 @@ from biblioteca.models import Autor, Empleado, Libro, Prestamo_libro, Socio
 class AutoreTestCase(TestCase):
 
     def setUp(self):
-        Autor.objects.create(nombre='Marcos', apellido='Eduardo',nacionalidad="Chile", activo=True)
+        Autor.objects.create(nombre='Marcos', apellido='Eduardo',nacionalidad="Chile", activo=True)  # noqa: E501
 
     def test_autor_estado_true(self):
         autor = Autor.objects.get(nombre='Marcos')
@@ -35,8 +35,8 @@ class AutoreTestCase(TestCase):
 class LibroAutorTestCase(TestCase):
 
     def setUp(self):
-        Autor.objects.create(nombre='Marcos', apellido='Eduardo',nacionalidad="Chile", activo=True)
-        Libro.objects.create(titulo='El señor de los anillos',isbn="9784561237895" , autor=Autor.objects.get(nombre='Marcos'), activo=True)
+        Autor.objects.create(nombre='Marcos', apellido='Eduardo',nacionalidad="Chile", activo=True)  # noqa: E501
+        Libro.objects.create(titulo='El señor de los anillos',isbn="9784561237895" , autor=Autor.objects.get(nombre='Marcos'), activo=True)  # noqa: E501
     
     def test_libro_autor(self):
         libro = Libro.objects.get(titulo='El señor de los anillos')
@@ -112,7 +112,7 @@ class PrestamoTestCase(TestCase):
 
     def setUp(self):
         Socio.objects.create(nombre="Marcos", apellido="Eduardo", fecha_nacimiento= datetime.strptime("2009-01-01", "%Y-%m-%d").date(), activo=True)
-        Empleado.objects.create(nombre='Marcos', apellido='Eduardo', numero_legajo='12345678', activo=True)
+        Empleado.objects.create(nombre='Marcos', apellido='Eduardo', numero_legajo='12345678', activo=True)  # noqa: E501
         Autor.objects.create(nombre='Marcos', apellido='Eduardo',nacionalidad="Chile", activo=True)
         Libro.objects.create(titulo='El señor de los anillos',isbn="9784561237895" , autor=Autor.objects.get(nombre='Marcos'), activo=True)
         Prestamo_libro.objects.create(socio=Socio.objects.get(nombre="Marcos"), empleado=Empleado.objects.get(nombre='Marcos'), libro=Libro.objects.get(titulo='El señor de los anillos'), fecha_prestamo=datetime.strptime("2021-01-01", "%Y-%m-%d").date(), fecha_devolucion=datetime.strptime("2021-01-01", "%Y-%m-%d").date())
