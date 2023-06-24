@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import *
+from biblioteca.views import *
+from exportcsv.views import *
 
 # REMOVER EL # PARA DEJAR FUNCIONAL EL PATH A LA URL mostrada
 
@@ -38,12 +39,21 @@ urlpatterns = [
          activar_cambiar_libro, name="status_libros"),
     path("libros/<int:id>/borrar/", borrar_libro, name="borrar_libro"),
     # PRESTAMOS
-    # <- cambio arreglado de url, parte de mi tarea anterior
     path("prestamos/<int:id>/eliminar/",
          borrar_prestamo_libro, name="borrar_prestamo"),
     path("prestamos/", prestamos_lista, name="prestamos_lista"),
 
     path("prestamos/nuevo/", PrestarForm, name="prestamo_nuevo"),
     path("prestamos/<int:id>/modificar/",
-         actualizar_prestamo, name="actualizar_prestamo")
+         actualizar_prestamo, name="actualizar_prestamo"),
+    # HISTORIAL
+
+    path("historial/", historial, name="historial"),
+
+    # EXPORT
+    path("exportar/autores", autores_a_csv, name="autores_a_csv"),
+    path("exportar/libros", libros_a_csv, name="libros_a_csv"),
+    path("exportar/empleados", empleado_a_csv, name="empleado_a_csv"),
+    path("exportar/socios", socio_a_csv, name="socio_a_csv"),
+    path("exportar/prestamos", prestamo_a_csv, name="prestamo_a_csv")
 ]
