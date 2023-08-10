@@ -52,8 +52,6 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'coreapi',
-    'crispy_forms',
-    'crispy_bootstrap4',
     'exportcsv',
 ]
 
@@ -109,7 +107,7 @@ WSGI_APPLICATION = 'WebApp.wsgi.application'
 # for ONLINE DEVELOPMENT
 
 DATABASES = {
-    'default': dj_database_url.config(      # Feel free to alter this value to suit your needs.
+    'default': dj_database_url.config(
         default='sqlite3:///db.sqlite3',
         conn_max_age=600)
 }
