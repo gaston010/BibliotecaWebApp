@@ -107,9 +107,7 @@ WSGI_APPLICATION = 'WebApp.wsgi.application'
 # for ONLINE DEVELOPMENT
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite3:///db.sqlite3',
-        conn_max_age=600)
+    'default': dj_database_url.config()
 }
 # for local development
 """DATABASES = {
