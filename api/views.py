@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from biblioteca.models import *
 from django.http import JsonResponse
 from rest_framework import viewsets
 from .serializer import *
 from biblioteca.models import *
+
+
 
 
 
@@ -27,3 +29,6 @@ class Prestamo_libroViewSet(viewsets.ModelViewSet):
     queryset = Prestamo_libro.objects.all().order_by('id')
     serializer_class = Prestamo_libroSerializer
 
+
+def index(request):
+    return redirect('/api')
