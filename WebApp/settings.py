@@ -17,9 +17,9 @@ import sqlite3
 import dj_database_url
 from django import db
 from django.contrib.messages import constants as messages
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -30,14 +30,12 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-
 ALLOWED_HOSTS = []
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
-
 
 # Application definition
 
@@ -52,9 +50,10 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'coreapi',
+    'crispy_forms',
+    'crispy_bootstrap4',
     'exportcsv',
 ]
-
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
@@ -100,25 +99,24 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'WebApp.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 # for ONLINE DEVELOPMENT
-DATABASES = {
-    'default': dj_database_url.config(
-        default='sqlite:///db.sqlite3',
-        conn_max_age=600
-    )
-}
-# for local development
+
 """DATABASES = {
+    'default': dj_database_url.config(      # Feel free to alter this value to suit your needs.
+        default='sqlite3:///db.sqlite3',
+        conn_max_age=600)
+}
+"""
+# for local development
+DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
-}"""
-
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -138,7 +136,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -149,7 +146,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
@@ -162,7 +158,6 @@ if not DEBUG:
 STATICFILES_DIRS = [
     BASE_DIR / 'biblioteca' / 'static',
 ]
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
