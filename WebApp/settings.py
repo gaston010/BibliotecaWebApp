@@ -50,8 +50,6 @@ INSTALLED_APPS = [
     'api',
     'rest_framework',
     'coreapi',
-    'crispy_forms',
-    'crispy_bootstrap4',
     'exportcsv',
 ]
 
