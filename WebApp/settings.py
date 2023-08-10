@@ -105,9 +105,11 @@ WSGI_APPLICATION = 'WebApp.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 # for ONLINE DEVELOPMENT
-
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',
+        conn_max_age=600
+    )
 }
 # for local development
 """DATABASES = {
